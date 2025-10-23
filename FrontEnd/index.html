@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Manajemen Inventori</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <div id="loginPage" class="login-container">
+        <div class="login-box">
+            <div class="logo">
+                <svg fill="none" stroke="white" viewBox="0 0 24 24" style="width: 32px; height: 32px;">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                </svg>
+            </div>
+            <h1>Selamat Datang</h1>
+            <p class="subtitle">Sistem Manajemen Inventori</p>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="nama@perusahaan.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="Masukkan password" required>
+                </div>
+                <button type="submit" class="btn">Masuk</button>
+            </form>
+            <p class="link-text" id="linkToRegister">Belum punya akun? Daftar di sini</p>
+            <div class="demo-info">
+                <p class="demo-title">Demo Account:</p>
+                <p>Email: admin@inventory.com<br>Password: admin123</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="registerPage" class="login-container hidden">
+        <div class="login-box">
+            <div class="logo">
+                <svg fill="none" stroke="white" viewBox="0 0 24 24" style="width: 32px; height: 32px;">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                </svg>
+            </div>
+            <h1>Buat Akun Baru</h1>
+            <p class="subtitle">Sistem Manajemen Inventori</p>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label>Nama Lengkap</label>
+                    <input type="text" placeholder="Masukkan nama lengkap" required>
+                </div>
+                <div class="form-group">
+                    <label>Role</label>
+                    <select>
+                        <option>Karyawan</option>
+                        <option>Manager</option>
+                        <option>Admin</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="nama@perusahaan.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="Masukkan password" required>
+                </div>
+                <button type="submit" class="btn">Daftar Sekarang</button>
+            </form>
+            <p class="link-text" id="linkToLogin">Sudah punya akun? Masuk di sini</p>
+        </div>
+    </div>
+
+    <div id="dashboard" class="dashboard hidden">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <svg fill="none" stroke="white" viewBox="0 0 24 24" style="width: 24px; height: 24px;">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                    </svg>
+                </div>
+                <div class="sidebar-title">
+                    <h2>Inventori</h2>
+                    <p>Management System</p>
+                </div>
+            </div>
+
+            <div class="user-info">
+                <div class="user-avatar">D</div>
+                <div class="user-details">
+                    <h3>Davin</h3>
+                    <p>Admin</p>
+                </div>
+            </div>
+
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item active" data-page="dashboardPage">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <rect x="3" y="3" width="7" height="7" rx="1" stroke-width="2"/>
+                        <rect x="14" y="3" width="7" height="7" rx="1" stroke-width="2"/>
+                        <rect x="14" y="14" width="7" height="7" rx="1" stroke-width="2"/>
+                        <rect x="3" y="14" width="7" height="7" rx="1" stroke-width="2"/>
+                    </svg>
+                    Dashboard
+                </li>
+                <li class="nav-item" data-page="inventoryPage">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                    </svg>
+                    Inventori
+                </li>
+                <li class="nav-item" data-page="transactionPage">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                    </svg>
+                    Transaksi
+                </li>
+                <li class="nav-item" data-page="reportPage">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
+                    Laporan
+                </li>
+            </ul>
+
+            <button class="logout-btn" id="logoutBtn">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="width: 20px; height: 20px; margin-right: 8px;">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                </svg>
+                Keluar
+            </button>
+        </aside>
+
+        <main class="main-content">
+            <div id="dashboardPage" class="page active">
+                <div class="page-header">
+                    <div class="page-title">
+                        <h1>Dashboard</h1>
+                        <p>Selamat datang kembali, Davin!</p>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon blue">
+                                <svg fill="none" stroke="#3b82f6" viewBox="0 0 24 24" style="width: 24px; height: 24px;">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                                </svg>
+                            </div>
+                            <span class="stat-change positive">+12%</span>
+                        </div>
+                        <p class="stat-label">Total Produk</p>
+                        <h3 class="stat-value">0</h3>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon green">
+                                <svg viewBox="0 0 24 24" style="width: 24px; height: 24px;">
+                                    <text x="12" y="18" text-anchor="middle" font-size="20" font-weight="bold" fill="#10b981">$</text>
+                                </svg>
+                            </div>
+                            <span class="stat-change positive">+8%</span>
+                        </div>
+                        <p class="stat-label">Nilai Inventori</p>
+                        <h3 class="stat-value">Rp 0</h3>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon red">
+                                <svg fill="none" stroke="#ef4444" viewBox="0 0 24 24" style="width: 24px; height: 24px;">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                                </svg>
+                            </div>
+                            <span class="stat-change negative">-2</span>
+                        </div>
+                        <p class="stat-label">Stok Menipis</p>
+                        <h3 class="stat-value">0</h3>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon purple">
+                                <svg fill="none" stroke="#a855f7" viewBox="0 0 24 24" style="width: 24px; height: 24px;">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                                </svg>
+                            </div>
+                            <span class="stat-change positive">+24%</span>
+                        </div>
+                        <p class="stat-label">Transaksi Bulan Ini</p>
+                        <h3 class="stat-value">0</h3>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Transaksi Terbaru</h3>
+                    </div>
+                    <div class="empty-state">
+                        <p>Belum ada transaksi</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="inventoryPage" class="page">
+                <div class="page-header">
+                    <div class="page-title">
+                        <h1>Manajemen Inventori</h1>
+                        <p>Kelola daftar produk dan stok barang</p>
+                    </div>
+                    <div class="header-actions">
+                        <button id="btnAddProduct">+ Tambah Produk</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>PRODUK</th>
+                                <th>SKU</th>
+                                <th>KATEGORI</th>
+                                <th>STOK</th>
+                                <th>HARGA</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="5" class="empty-state">Tidak ada produk ditemukan</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="transactionPage" class="page">
+                <div class="page-header">
+                    <div class="page-title">
+                        <h1>Transaksi Barang</h1>
+                        <p>Catat barang masuk dan keluar</p>
+                    </div>
+                    <div class="header-actions">
+                        <button id="btnAddTransaction">+ Tambah Transaksi</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="empty-state">
+                        <p>Belum ada transaksi</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="reportPage" class="page">
+                <div class="page-header">
+                    <div class="page-title">
+                        <h1>Laporan Inventori</h1>
+                        <p>Lihat ringkasan dan analisis stok bulanan</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="empty-state">
+                        <p>Tidak ada transaksi pada bulan ini</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Tambah Produk Baru</h2>
+                <button class="close-btn" id="closeProductModal">×</button>
+            </div>
+            <form>
+                <div class="form-group">
+                    <label>Nama Produk</label>
+                    <input type="text" placeholder="Masukkan nama produk">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>SKU</label>
+                        <input type="text" placeholder="SKU-001">
+                    </div>
+                    <div class="form-group">
+                        <label>Kategori</label>
+                        <input type="text" placeholder="Elektronik">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Harga</label>
+                        <input type="number" placeholder="50000">
+                    </div>
+                    <div class="form-group">
+                        <label>Stok</label>
+                        <input type="number" placeholder="100">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="cancelProductModal">Batal</button>
+                    <button type="submit" class="btn">Tambah</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="transactionModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Tambah Transaksi Baru</h2>
+                <button class="close-btn" id="closeTransactionModal">×</button>
+            </div>
+            <form>
+                <div class="form-group">
+                    <label>Tipe Transaksi</label>
+                    <select>
+                        <option>Barang Masuk</option>
+                        <option>Barang Keluar</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Jumlah</label>
+                    <input type="number" placeholder="Masukkan jumlah">
+                </div>
+                <div class="form-group">
+                    <label>Catatan</label>
+                    <textarea placeholder="Tambahkan catatan..."></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="cancelTransactionModal">Batal</button>
+                    <button type="submit" class="btn">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Navigation between login and register
+        document.getElementById('linkToRegister').addEventListener('click', function() {
+            document.getElementById('loginPage').classList.add('hidden');
+            document.getElementById('registerPage').classList.remove('hidden');
+        });
+
+        document.getElementById('linkToLogin').addEventListener('click', function() {
+            document.getElementById('registerPage').classList.add('hidden');
+            document.getElementById('loginPage').classList.remove('hidden');
+        });
+
+        // Login form submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('loginPage').classList.add('hidden');
+            document.getElementById('dashboard').classList.remove('hidden');
+        });
+
+        // Register form submission
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('registerPage').classList.add('hidden');
+            document.getElementById('dashboard').classList.remove('hidden');
+        });
+
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            document.getElementById('dashboard').classList.add('hidden');
+            document.getElementById('loginPage').classList.remove('hidden');
+        });
+
+        // Navigation menu
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove active class from all items
+                navItems.forEach(nav => nav.classList.remove('active'));
+                // Add active class to clicked item
+                this.classList.add('active');
+                
+                // Hide all pages
+                const pages = document.querySelectorAll('.page');
+                pages.forEach(page => page.classList.remove('active'));
+                
+                // Show selected page
+                const targetPage = this.getAttribute('data-page');
+                document.getElementById(targetPage).classList.add('active');
+            });
+        });
+
+        // Product modal
+        document.getElementById('btnAddProduct').addEventListener('click', function() {
+            document.getElementById('productModal').classList.add('active');
+        });
+
+        document.getElementById('closeProductModal').addEventListener('click', function() {
+            document.getElementById('productModal').classList.remove('active');
+        });
+
+        document.getElementById('cancelProductModal').addEventListener('click', function() {
+            document.getElementById('productModal').classList.remove('active');
+        });
+
+        // Transaction modal
+        document.getElementById('btnAddTransaction').addEventListener('click', function() {
+            document.getElementById('transactionModal').classList.add('active');
+        });
+
+        document.getElementById('closeTransactionModal').addEventListener('click', function() {
+            document.getElementById('transactionModal').classList.remove('active');
+        });
+
+        document.getElementById('cancelTransactionModal').addEventListener('click', function() {
+            document.getElementById('transactionModal').classList.remove('active');
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal')) {
+                e.target.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
