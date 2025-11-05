@@ -49,7 +49,8 @@ export class UserService {
   }
 
   async findAll() {
-    return this.prisma.user.findMany({
+  try {
+    return await this.prisma.user.findMany({
       select: {
         id: true,
         email: true,
@@ -64,7 +65,11 @@ export class UserService {
         createdAt: 'desc',
       },
     });
+  } catch (error) {
+    console.error('Error in findAll:', error);
+    throw error;
   }
+}
 
   async findOne(id: string) {
     const user = await this.prisma.user.findUnique({

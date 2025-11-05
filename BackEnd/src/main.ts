@@ -6,11 +6,19 @@ import express from 'express';
 import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
-	const server = express();
-	const app = await NestFactory.create(AppModule, new ExpressAdapter(server));
-	app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
-	await app.listen(3000);
-	console.log('Application is running on: http://localhost:3000');
+const server = express();
+const app = await NestFactory.create(AppModule, new ExpressAdapter(server));
+
+app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
+
+  // Tambahkan prefix global
+app.setGlobalPrefix('api');
+
+await app.listen(3000);
+console.log('🚀 Application is running on: http://localhost:3000/api');
+
 }
+
+
 
 bootstrap();

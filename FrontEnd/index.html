@@ -20,18 +20,18 @@
             <form id="loginForm">
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="email" placeholder="nama@perusahaan.com" required>
+                    <input type="email" id="loginEmail" placeholder="nama@perusahaan.com" required>
                 </div>
                 <div class="form-group">
                     <label>Password</label>
-                    <input type="password" placeholder="Masukkan password" required>
+                    <input type="password" id="loginPassword" placeholder="Masukkan password" required>
                 </div>
                 <button type="submit" class="btn">Masuk</button>
             </form>
             <p class="link-text" id="linkToRegister">Belum punya akun? Daftar di sini</p>
             <div class="demo-info">
                 <p class="demo-title">Demo Account:</p>
-                <p>Email: admin@inventory.com<br>Password: admin123</p>
+                <p>Email: stokin@gmail.com <br>Password: stokin321</p>
             </div>
         </div>
     </div>
@@ -48,11 +48,11 @@
             <form id="registerForm">
                 <div class="form-group">
                     <label>Nama Lengkap</label>
-                    <input type="text" placeholder="Masukkan nama lengkap" required>
+                    <input type="text" id="registerName" placeholder="Masukkan nama lengkap" required>
                 </div>
                 <div class="form-group">
                     <label>Role</label>
-                    <select>
+                    <select id="registerRole">
                         <option>Karyawan</option>
                         <option>Manager</option>
                         <option>Admin</option>
@@ -60,11 +60,11 @@
                 </div>
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="email" placeholder="nama@perusahaan.com" required>
+                    <input type="email" id="registerEmail" placeholder="nama@perusahaan.com" required>
                 </div>
                 <div class="form-group">
                     <label>Password</label>
-                    <input type="password" placeholder="Masukkan password" required>
+                    <input type="password" id="registerPassword" placeholder="Masukkan password" required>
                 </div>
                 <button type="submit" class="btn">Daftar Sekarang</button>
             </form>
@@ -87,10 +87,10 @@
             </div>
 
             <div class="user-info">
-                <div class="user-avatar">D</div>
+                <div class="user-avatar" id="userAvatar">D</div>
                 <div class="user-details">
-                    <h3>Davin</h3>
-                    <p>Admin</p>
+                    <h3 id="userName">Davin</h3>
+                    <p id="userRole">Admin</p>
                 </div>
             </div>
 
@@ -137,7 +137,7 @@
                 <div class="page-header">
                     <div class="page-title">
                         <h1>Dashboard</h1>
-                        <p>Selamat datang kembali, Davin!</p>
+                        <p id="welcomeMessage">Selamat datang kembali, Davin!</p>
                     </div>
                 </div>
 
@@ -152,7 +152,7 @@
                             <span class="stat-change positive">+12%</span>
                         </div>
                         <p class="stat-label">Total Produk</p>
-                        <h3 class="stat-value">0</h3>
+                        <h3 class="stat-value" id="totalProducts">0</h3>
                     </div>
 
                     <div class="stat-card">
@@ -165,7 +165,7 @@
                             <span class="stat-change positive">+8%</span>
                         </div>
                         <p class="stat-label">Nilai Inventori</p>
-                        <h3 class="stat-value">Rp 0</h3>
+                        <h3 class="stat-value" id="inventoryValue">Rp 0</h3>
                     </div>
 
                     <div class="stat-card">
@@ -178,7 +178,7 @@
                             <span class="stat-change negative">-2</span>
                         </div>
                         <p class="stat-label">Stok Menipis</p>
-                        <h3 class="stat-value">0</h3>
+                        <h3 class="stat-value" id="lowStockItems">0</h3>
                     </div>
 
                     <div class="stat-card">
@@ -191,7 +191,7 @@
                             <span class="stat-change positive">+24%</span>
                         </div>
                         <p class="stat-label">Transaksi Bulan Ini</p>
-                        <h3 class="stat-value">0</h3>
+                        <h3 class="stat-value" id="monthlyTransactions">0</h3>
                     </div>
                 </div>
 
@@ -199,7 +199,7 @@
                     <div class="card-header">
                         <h3 class="card-title">Transaksi Terbaru</h3>
                     </div>
-                    <div class="empty-state">
+                    <div id="recentTransactions" class="empty-state">
                         <p>Belum ada transaksi</p>
                     </div>
                 </div>
@@ -227,7 +227,7 @@
                                 <th>HARGA</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="productsTableBody">
                             <tr>
                                 <td colspan="5" class="empty-state">Tidak ada produk ditemukan</td>
                             </tr>
@@ -248,7 +248,7 @@
                 </div>
 
                 <div class="card">
-                    <div class="empty-state">
+                    <div id="transactionsList" class="empty-state">
                         <p>Belum ada transaksi</p>
                     </div>
                 </div>
@@ -277,29 +277,29 @@
                 <h2>Tambah Produk Baru</h2>
                 <button class="close-btn" id="closeProductModal">×</button>
             </div>
-            <form>
+            <form id="productForm">
                 <div class="form-group">
                     <label>Nama Produk</label>
-                    <input type="text" placeholder="Masukkan nama produk">
+                    <input type="text" id="productName" placeholder="Masukkan nama produk" required>
                 </div>
                 <div class="form-row">
                     <div class="form-group">
                         <label>SKU</label>
-                        <input type="text" placeholder="SKU-001">
+                        <input type="text" id="productSKU" placeholder="SKU-001" required>
                     </div>
                     <div class="form-group">
                         <label>Kategori</label>
-                        <input type="text" placeholder="Elektronik">
+                        <input type="text" id="productCategory" placeholder="Elektronik" required>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group">
                         <label>Harga</label>
-                        <input type="number" placeholder="50000">
+                        <input type="number" id="productPrice" placeholder="50000" required>
                     </div>
                     <div class="form-group">
                         <label>Stok</label>
-                        <input type="number" placeholder="100">
+                        <input type="number" id="productStock" placeholder="100" required>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -316,21 +316,28 @@
                 <h2>Tambah Transaksi Baru</h2>
                 <button class="close-btn" id="closeTransactionModal">×</button>
             </div>
-            <form>
+            <form id="transactionForm">
                 <div class="form-group">
                     <label>Tipe Transaksi</label>
-                    <select>
-                        <option>Barang Masuk</option>
-                        <option>Barang Keluar</option>
+                    <select id="transactionType" required>
+                        <option value="">Pilih Tipe</option>
+                        <option value="in">Barang Masuk</option>
+                        <option value="out">Barang Keluar</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Produk</label>
+                    <select id="transactionProduct" class="product-select" required>
+                        <option value="">Pilih Produk</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label>Jumlah</label>
-                    <input type="number" placeholder="Masukkan jumlah">
+                    <input type="number" id="transactionQuantity" placeholder="Masukkan jumlah" required>
                 </div>
                 <div class="form-group">
                     <label>Catatan</label>
-                    <textarea placeholder="Tambahkan catatan..."></textarea>
+                    <textarea id="transactionNote" placeholder="Tambahkan catatan..."></textarea>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" id="cancelTransactionModal">Batal</button>
@@ -341,6 +348,22 @@
     </div>
 
     <script>
+        // Data storage
+        let users = JSON.parse(localStorage.getItem('users')) || [
+            { name: 'Admin', email: 'admin@inventory.com', password: 'admin123', role: 'Admin' }
+        ];
+        
+        let products = JSON.parse(localStorage.getItem('products')) || [];
+        let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
+        let currentUser = null;
+
+        // Initialize data
+        function initializeData() {
+            localStorage.setItem('users', JSON.stringify(users));
+            localStorage.setItem('products', JSON.stringify(products));
+            localStorage.setItem('transactions', JSON.stringify(transactions));
+        }
+
         // Navigation between login and register
         document.getElementById('linkToRegister').addEventListener('click', function() {
             document.getElementById('loginPage').classList.add('hidden');
@@ -355,21 +378,77 @@
         // Login form submission
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            document.getElementById('loginPage').classList.add('hidden');
-            document.getElementById('dashboard').classList.remove('hidden');
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            // Find user
+            const user = users.find(u => u.email === email && u.password === password);
+            
+            if (user) {
+                currentUser = user;
+                document.getElementById('loginPage').classList.add('hidden');
+                document.getElementById('dashboard').classList.remove('hidden');
+                
+                // Update user info
+                document.getElementById('userName').textContent = user.name;
+                document.getElementById('userRole').textContent = user.role;
+                document.getElementById('userAvatar').textContent = user.name.charAt(0);
+                document.getElementById('welcomeMessage').textContent = `Selamat datang kembali, ${user.name}!`;
+                
+                // Load dashboard data
+                loadDashboardData();
+                loadProductsTable();
+                loadTransactionsList();
+            } else {
+                alert('Email atau password salah!');
+            }
         });
 
         // Register form submission
         document.getElementById('registerForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            const name = document.getElementById('registerName').value;
+            const role = document.getElementById('registerRole').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            
+            // Check if email already exists
+            if (users.find(u => u.email === email)) {
+                alert('Email sudah terdaftar!');
+                return;
+            }
+            
+            // Add new user
+            const newUser = { name, email, password, role };
+            users.push(newUser);
+            localStorage.setItem('users', JSON.stringify(users));
+            
+            // Login with new account
+            currentUser = newUser;
             document.getElementById('registerPage').classList.add('hidden');
             document.getElementById('dashboard').classList.remove('hidden');
+            
+            // Update user info
+            document.getElementById('userName').textContent = name;
+            document.getElementById('userRole').textContent = role;
+            document.getElementById('userAvatar').textContent = name.charAt(0);
+            document.getElementById('welcomeMessage').textContent = `Selamat datang, ${name}!`;
+            
+            // Load dashboard data
+            loadDashboardData();
+            loadProductsTable();
+            loadTransactionsList();
         });
 
         // Logout
         document.getElementById('logoutBtn').addEventListener('click', function() {
+            currentUser = null;
             document.getElementById('dashboard').classList.add('hidden');
             document.getElementById('loginPage').classList.remove('hidden');
+            
+            // Reset forms
+            document.getElementById('loginForm').reset();
+            document.getElementById('registerForm').reset();
         });
 
         // Navigation menu
@@ -404,8 +483,48 @@
             document.getElementById('productModal').classList.remove('active');
         });
 
+        // Product form submission
+        document.getElementById('productForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('productName').value;
+            const sku = document.getElementById('productSKU').value;
+            const category = document.getElementById('productCategory').value;
+            const price = parseInt(document.getElementById('productPrice').value);
+            const stock = parseInt(document.getElementById('productStock').value);
+            
+            // Check if SKU already exists
+            if (products.find(p => p.sku === sku)) {
+                alert('SKU sudah digunakan!');
+                return;
+            }
+            
+            // Add new product
+            const newProduct = {
+                id: Date.now(),
+                name,
+                sku,
+                category,
+                price,
+                stock
+            };
+            
+            products.push(newProduct);
+            localStorage.setItem('products', JSON.stringify(products));
+            
+            // Close modal and reset form
+            document.getElementById('productModal').classList.remove('active');
+            document.getElementById('productForm').reset();
+            
+            // Update tables
+            loadProductsTable();
+            loadDashboardData();
+        });
+
         // Transaction modal
         document.getElementById('btnAddTransaction').addEventListener('click', function() {
+            // Load products for selection
+            loadProductsForTransaction();
             document.getElementById('transactionModal').classList.add('active');
         });
 
@@ -417,12 +536,204 @@
             document.getElementById('transactionModal').classList.remove('active');
         });
 
+        // Transaction form submission
+        document.getElementById('transactionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const type = document.getElementById('transactionType').value;
+            const productId = parseInt(document.getElementById('transactionProduct').value);
+            const quantity = parseInt(document.getElementById('transactionQuantity').value);
+            const note = document.getElementById('transactionNote').value;
+            
+            // Find product
+            const productIndex = products.findIndex(p => p.id === productId);
+            if (productIndex === -1) {
+                alert('Produk tidak ditemukan!');
+                return;
+            }
+            
+            const product = products[productIndex];
+            
+            // Check stock for outgoing transactions
+            if (type === 'out' && product.stock < quantity) {
+                alert('Stok tidak mencukupi!');
+                return;
+            }
+            
+            // Update product stock
+            if (type === 'in') {
+                product.stock += quantity;
+            } else {
+                product.stock -= quantity;
+            }
+            
+            products[productIndex] = product;
+            
+            // Add transaction
+            const newTransaction = {
+                id: Date.now(),
+                type,
+                productId,
+                productName: product.name,
+                quantity,
+                note,
+                date: new Date().toISOString(),
+                user: currentUser.name
+            };
+            
+            transactions.push(newTransaction);
+            
+            // Save to localStorage
+            localStorage.setItem('products', JSON.stringify(products));
+            localStorage.setItem('transactions', JSON.stringify(transactions));
+            
+            // Close modal and reset form
+            document.getElementById('transactionModal').classList.remove('active');
+            document.getElementById('transactionForm').reset();
+            
+            // Update tables
+            loadTransactionsList();
+            loadProductsTable();
+            loadDashboardData();
+        });
+
+        // Load products for transaction form
+        function loadProductsForTransaction() {
+            const select = document.getElementById('transactionProduct');
+            select.innerHTML = '<option value="">Pilih Produk</option>';
+            
+            products.forEach(product => {
+                const option = document.createElement('option');
+                option.value = product.id;
+                option.textContent = `${product.name} (Stok: ${product.stock})`;
+                select.appendChild(option);
+            });
+        }
+
+        // Load products table
+        function loadProductsTable() {
+            const tbody = document.getElementById('productsTableBody');
+            tbody.innerHTML = '';
+            
+            if (products.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="empty-state">Tidak ada produk ditemukan</td></tr>';
+                return;
+            }
+            
+            products.forEach(product => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${product.name}</td>
+                    <td>${product.sku}</td>
+                    <td>${product.category}</td>
+                    <td>${product.stock}</td>
+                    <td>Rp ${product.price.toLocaleString()}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // Load transactions list
+        function loadTransactionsList() {
+            const container = document.getElementById('transactionsList');
+            container.innerHTML = '';
+            
+            if (transactions.length === 0) {
+                container.innerHTML = '<p>Belum ada transaksi</p>';
+                return;
+            }
+            
+            // Show only recent 10 transactions
+            const recentTransactions = transactions.slice(-10).reverse();
+            
+            recentTransactions.forEach(transaction => {
+                const div = document.createElement('div');
+                div.className = 'transaction-item';
+                
+                const typeText = transaction.type === 'in' ? 'Barang Masuk' : 'Barang Keluar';
+                const typeClass = transaction.type === 'in' ? 'in' : 'out';
+                
+                div.innerHTML = `
+                    <div class="transaction-info">
+                        <h4>${transaction.productName}</h4>
+                        <p>${new Date(transaction.date).toLocaleDateString('id-ID')} • ${transaction.user}</p>
+                        <p>${transaction.note || 'Tidak ada catatan'}</p>
+                    </div>
+                    <div class="transaction-amount">
+                        <span class="type ${typeClass}">${typeText}</span>
+                        <h4>${transaction.quantity} unit</h4>
+                    </div>
+                `;
+                
+                container.appendChild(div);
+            });
+        }
+
+        // Load dashboard data
+        function loadDashboardData() {
+            // Total products
+            document.getElementById('totalProducts').textContent = products.length;
+            
+            // Inventory value
+            const totalValue = products.reduce((sum, product) => sum + (product.price * product.stock), 0);
+            document.getElementById('inventoryValue').textContent = `Rp ${totalValue.toLocaleString()}`;
+            
+            // Low stock items (stock < 10)
+            const lowStock = products.filter(product => product.stock < 10).length;
+            document.getElementById('lowStockItems').textContent = lowStock;
+            
+            // Monthly transactions
+            const currentMonth = new Date().getMonth();
+            const currentYear = new Date().getFullYear();
+            const monthlyTransactions = transactions.filter(transaction => {
+                const date = new Date(transaction.date);
+                return date.getMonth() === currentMonth && date.getFullYear() === currentYear;
+            }).length;
+            document.getElementById('monthlyTransactions').textContent = monthlyTransactions;
+            
+            // Recent transactions
+            const recentContainer = document.getElementById('recentTransactions');
+            recentContainer.innerHTML = '';
+            
+            if (transactions.length === 0) {
+                recentContainer.innerHTML = '<p>Belum ada transaksi</p>';
+                return;
+            }
+            
+            // Show only recent 5 transactions
+            const recentTransactions = transactions.slice(-5).reverse();
+            
+            recentTransactions.forEach(transaction => {
+                const div = document.createElement('div');
+                div.className = 'transaction-item';
+                
+                const typeText = transaction.type === 'in' ? 'Barang Masuk' : 'Barang Keluar';
+                const typeClass = transaction.type === 'in' ? 'in' : 'out';
+                
+                div.innerHTML = `
+                    <div class="transaction-info">
+                        <h4>${transaction.productName}</h4>
+                        <p>${new Date(transaction.date).toLocaleDateString('id-ID')}</p>
+                    </div>
+                    <div class="transaction-amount">
+                        <span class="type ${typeClass}">${typeText}</span>
+                        <h4>${transaction.quantity} unit</h4>
+                    </div>
+                `;
+                
+                recentContainer.appendChild(div);
+            });
+        }
+
         // Close modal when clicking outside
         window.addEventListener('click', function(e) {
             if (e.target.classList.contains('modal')) {
                 e.target.classList.remove('active');
             }
         });
+
+        // Initialize data on page load
+        initializeData();
     </script>
 </body>
 </html>
